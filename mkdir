@@ -1,0 +1,702 @@
+{% load static %}
+
+<!DOCTYPE html>
+    <htlm>
+        <head>
+            {% block titre %}
+            <title>Accueil yabrigni</title>
+            {% endblock %}
+            
+            <meta charset="utf-8" />     
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                   
+            <link rel="stylesheet" href="{% static 'css/yabrigni.css' %}"/>
+            <!--<link rel="stylesheet" href="{% static 'css/bootstrap/css/bootstrap.min.css' %}"/>-->
+            
+            <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>-->
+            <script src="{% static 'javascript/jquery-3.6.0.min.js' %}"></script>
+            <style>
+                  /* css pour préload */
+                  /* Optional - (you can remove it) */
+                    	* {
+                    	box-sizing: border-box;
+                    	margin: 0;
+                    	padding: 0;
+                    }
+                    
+                    
+                    /* Optional - (you can remove it) */
+                    /*
+                    body {
+                    	background: url('https://images.unsplash.com/photo-1472898965229-f9b06b9c9bbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80') #1c1c1c center center / cover no-repeat fixed;
+                    	background: url("index.jpeg")
+                    	height: 200vh;
+                    }
+                    */
+                    
+                    /* Load Settings */
+                    .no-scroll-y {
+                    	overflow-y: hidden;
+                    }
+                    
+                    #preloader-section{
+                        	box-sizing: border-box;
+                        	margin: 0;
+                        	padding: 0;
+                    }
+                    
+                    
+                                        
+                    /* Preloader */
+                    .ctn-preloader {
+                    	-webkit-box-align: center;
+                    	        align-items: center;
+                      
+                      /* Show or Hide cursor when hover of Preloader*/
+                      cursor: none;
+                      
+                    	display: -webkit-box;
+                    	display: flex;
+                      height: 100%;
+                      -webkit-box-pack: center;
+                              justify-content: center;
+                    	position: fixed;
+                    	left: 0;
+                      top: 0;
+                    	width: 100%;
+                      z-index: 9999;
+                    }
+                    
+                    .ctn-preloader .animation-preloader {
+                    	position: absolute;
+                      z-index: 100;
+                    }
+                    
+                    /* Spinner loading */
+                    .ctn-preloader .animation-preloader .spinner {
+                      -webkit-animation: spinner 1s infinite linear;
+                              animation: spinner 1s infinite linear;
+                    	border-radius: 50%;
+                      border: 3px solid rgba(0, 0, 0, 0.2);
+                      border-top-color: #000000; /* It is not identified in alphabetical order so that it does not overwrite it */
+                      height: 9em;
+                      margin: 0 auto 3.5em auto;
+                      width: 9em;
+                    }
+                    
+                    /* Text Loading */
+                    .ctn-preloader .animation-preloader .txt-loading {
+                      font: bold 5em 'Montserrat', sans-serif;
+                    	text-align: center;
+                    	-webkit-user-select: none;
+                    	   -moz-user-select: none;
+                    	    -ms-user-select: none;
+                    	        user-select: none;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:before {
+                      -webkit-animation: letters-loading 4s infinite;
+                              animation: letters-loading 4s infinite;
+                      color: #000000;
+                      content: attr(data-text-preloader);
+                      left: 0;
+                      opacity: 0;
+                      position: absolute;
+                      top: 0;
+                      -webkit-transform: rotateY(-90deg);
+                              transform: rotateY(-90deg);
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading {
+                    	color: rgba(0, 0, 0, 0.2);
+                    	position: relative;
+                    }
+                    
+                    /* Letters Animation */
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(2):before {
+                      -webkit-animation-delay: 0.2s;
+                              animation-delay: 0.2s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(3):before {
+                      -webkit-animation-delay: 0.4s;
+                              animation-delay: 0.4s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(4):before {
+                      -webkit-animation-delay: 0.6s;
+                              animation-delay: 0.6s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(5):before {
+                      -webkit-animation-delay: 0.8s;
+                              animation-delay: 0.8s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(6):before {
+                      -webkit-animation-delay: 1s;
+                              animation-delay: 1s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(7):before {
+                      -webkit-animation-delay: 1.2s;
+                              animation-delay: 1.2s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(8):before {
+                      -webkit-animation-delay: 1.4s;
+                              animation-delay: 1.4s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(9):before {
+                      -webkit-animation-delay: 1.6s;
+                              animation-delay: 1.6s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(10):before {
+                      -webkit-animation-delay: 1.8s;
+                              animation-delay: 1.8s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(11):before {
+                      -webkit-animation-delay: 2s;
+                              animation-delay: 2s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(12):before {
+                      -webkit-animation-delay: 2.2s;
+                              animation-delay: 2.2s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(13):before {
+                      -webkit-animation-delay: 2.4s;
+                              animation-delay: 2.4s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(14):before {
+                      -webkit-animation-delay: 2.6s;
+                              animation-delay: 2.6s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(15):before {
+                      -webkit-animation-delay: 2.8s;
+                              animation-delay: 2.8s;
+                    }
+                    
+                    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(16):before {
+                      -webkit-animation-delay: 3s;
+                              animation-delay: 3s;
+                    }
+                    
+                    /* Loader section Settings */
+                    .ctn-preloader .loader-section {
+                      background-color: #ffffff;
+                      height: 100%;
+                    	position: fixed;
+                      top: 0;
+                      width: calc(50% + 1px);
+                    }
+                    
+                    .ctn-preloader .loader-section.section-left {
+                      left: 0;
+                    }
+                    
+                    .ctn-preloader .loader-section.section-right {
+                      right: 0;
+                    }
+                    
+                    /* Fade effect in loading animation */
+                    .loaded .animation-preloader {
+                      opacity: 0;
+                      -webkit-transition: 0.3s ease-out;
+                      transition: 0.3s ease-out;
+                    }
+                    
+                    /* Curtain effect */
+                    .loaded .loader-section.section-left {
+                      -webkit-transform: translateX(-101%);
+                              transform: translateX(-101%);
+                      -webkit-transition: 3.5s 0.1s all cubic-bezier(0.1, 0.1, 0.1, 2.000);
+                      transition: 3.5s 0.1s all cubic-bezier(0.1, 0.1, 0.1, 2.000);
+                    }
+                    
+                    .loaded .loader-section.section-right {
+                      -webkit-transform: translateX(101%);
+                              transform: translateX(101%);
+                      -webkit-transition: 3.5s 0.1s all cubic-bezier(0.1, 0.1, 0.1, 2.000);
+                      transition: 3.5s 0.1s all cubic-bezier(0.1, 0.1, 0.1, 2.000);
+                    }
+                    
+                    /* Preloader Animation */
+                    @-webkit-keyframes spinner {
+                    	to {
+                    		-webkit-transform: rotateZ(360deg);
+                    		        transform: rotateZ(360deg);
+                    	}
+                    }
+                    @keyframes spinner {
+                    	to {
+                    		-webkit-transform: rotateZ(360deg);
+                    		        transform: rotateZ(360deg);
+                    	}
+                    }
+                    
+                    /* Animation of the letters loading from the preloader */
+                    @-webkit-keyframes letters-loading {
+                      0%,
+                      75%,
+                      100% {
+                      	opacity: 0;
+                        -webkit-transform: rotateY(-90deg);
+                                transform: rotateY(-90deg);
+                      }
+                    
+                      25%,
+                      50% {
+                        opacity: 1;
+                        -webkit-transform: rotateY(0deg);
+                                transform: rotateY(0deg);
+                      }
+                    }
+                    @keyframes letters-loading {
+                      0%,
+                      75%,
+                      100% {
+                      	opacity: 0;
+                        -webkit-transform: rotateY(-90deg);
+                                transform: rotateY(-90deg);
+                      }
+                    
+                      25%,
+                      50% {
+                        opacity: 1;
+                        -webkit-transform: rotateY(0deg);
+                                transform: rotateY(0deg);
+                      }
+                    }
+                    
+                    /* Backward laptop size (laptop, tablet, cell phone) */
+                    @media screen and (max-width: 767px) {
+                    	/* Preloader */
+                    	/* Spinner Loading */	
+                    	.ctn-preloader .animation-preloader .spinner {
+                    		height: 8em;
+                    		width: 8em;
+                    	}
+                    
+                    	/* Text Loading */
+                    	.ctn-preloader .animation-preloader .txt-loading {
+                    	  font: bold 3.5em 'Montserrat', sans-serif;
+                    	}
+                    }
+                    
+                    @media screen and (max-width: 500px) {
+                    	/* Prelaoder */
+                    	/* Spinner Loading */
+                    	.ctn-preloader .animation-preloader .spinner {
+                    		height: 7em;
+                    		width: 7em;
+                    	}
+                    
+                    	/* Text Loading */
+                    	.ctn-preloader .animation-preloader .txt-loading {
+                    	  font: bold 1.8em 'Montserrat', sans-serif; /* 2 par defaut*/
+                    	}
+                    }
+                    
+                    /* Copy-right by ARiyou2000 in May2020 - Fin preload*/
+                    
+                    
+                    
+                    
+                    
+                    
+                    /* grid */
+                                               
+                                               
+                        /*ajouté*/
+                        main
+                        {
+                            /*border:1px solid blue;*/
+                            /*text-align : center;*/
+                            width : 93%; /* 94 */
+                            margin : auto;
+                        }
+                        /* fin ajout */
+                    
+                        .grid {
+                          display: grid;
+                          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                          grid-gap: 20px;
+                          align-items: stretch;
+                        }
+                        
+                        .grid > article {
+                          border: 1px solid #ccc;
+                          box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+                          transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);  /* ajouté */  
+                        }
+                        
+                        .grid > article img {
+                          max-width: 100%;
+                          
+                                                
+                        }
+                        
+                        /* ajouté */                     
+                         .grid > article:hover {
+                              transform: scale(1.035, 1.035);
+                              box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+                            }
+                        /* fin ajout */
+                        
+                        
+                        .grid .text {
+                          padding: 20px;
+                        }
+                        
+                        
+                        /* petit ecran */
+                        @media all and (max-width : 767px) /* 300 px*/
+                        {
+                             .grid > article {                              
+                               margin-top:24px;  /* ajouté : marge entre les article de grid*/ 
+                             }
+                             
+                              .container
+                              {
+                                  /*border:1px solid blue;*/
+                                  margin-top:-50px
+                              }
+                            
+                        }
+                    /* Fin grid */
+
+            </style>
+        </head>
+        
+        
+        <body id="page-top" class="no-scroll-y"> <!-- Utile pour le preload -->
+        
+            <header> 
+                 <h1> yabrigni.com </h1>     
+                 <nav>
+                  <ul>
+                    <li class="menu-deroulant">
+                      <a href="#">Menu</a>
+                      <ul class="sous-menu">
+                        <li><a href="{% url 'accueil' %}">Accueil</a></li>      
+                        <li><a href="{% url 'autreLogiciels' %}">Web & App</a></li>        
+                        <li><a href="#">Formation</a></li>
+                        <li><a href="#">News</a></li>
+                        <!--<li><a href="#">Marketing</a></li>-->
+                      </ul>
+                    </li>
+                    <li class="menu-deroulant">
+                      <a href="#"> Analyse </a>
+                      <ul class="sous-menu">
+                        <li><a href="{% url 'ImportData' %}">1- Analyse de données </a></li>
+                        <li><a href="{% url 'importeImage' %}">2- Traitement d'images</a></li>
+                      </ul>
+                    </li>
+                    
+                    <li class="menu-deroulant">
+                      <a href="#"> Membres </a>
+                      <ul class="sous-menu">
+                        <li><a href="{% url 'Inscription' %}">Inscription</a></li>
+                        <!--<li><a href="{% url 'Inscription2' %}">Inscription2</a></li>-->
+                        <li><a href="{% url 'Connexion' %}">Connexion</a></li>
+                        <li><a href="{% url 'admin:index' %}">Administration</a></li>
+
+                      </ul>
+                    </li>
+                    
+                   <!-- <li><a href="{% url 'Connexion' %}">Connexion</a></li>-->
+                  </ul>
+                </nav>  
+            </header>
+            
+            
+            
+            
+            
+            <div id="loader-wrapper">
+              <div id="loader"></div>
+              
+              <div class="loader-section section-left"></div>
+              <div class="loader-section section-right"></div>
+              
+            </div>
+            
+            
+            
+            
+            
+            
+        
+  <!-- Start: Preloader -->
+  {% block preload %}
+  <section id="preloader-section">
+            <div id="preloader">
+                <div id="ctn-preloader" class="ctn-preloader">
+                    <div class="animation-preloader">
+                        
+                        <!-- Spinner -->
+                        <div class="spinner"></div>
+                        
+                        <!-- Start: Text Loading -->
+                        <div class="txt-loading">
+                            <span data-text-preloader="Y" class="letters-loading">Y</span>
+                            <span data-text-preloader="A" class="letters-loading">A</span>
+                            <span data-text-preloader="B" class="letters-loading">B</span>
+                            <span data-text-preloader="R" class="letters-loading">R</span>
+                            <span data-text-preloader="I" class="letters-loading">I</span>
+                            <span data-text-preloader="G" class="letters-loading">G</span>
+                            <span data-text-preloader="N" class="letters-loading">N</span>
+                            <span data-text-preloader="I" class="letters-loading">I</span>
+                            <span data-text-preloader="." class="letters-loading">.</span>
+                            <span data-text-preloader="C" class="letters-loading">C</span>
+                            <span data-text-preloader="O" class="letters-loading">O</span>
+                            <span data-text-preloader="M" class="letters-loading">M</span>
+                        </div>
+                        <!-- End: Text Loading -->
+
+                    </div>
+
+                    <!-- Start: Preloader sides - Model 1 -->
+                    <div class="loader-section section-left"></div>
+                    <div class="loader-section section-right"></div>
+                    <!-- End: Preloader sides - Model 1 -->
+
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+  <!-- End: Preloader -->
+  
+  
+  
+  
+  
+                           
+                       
+            {% block article %}
+                         
+            <section>  
+            <!-- <progress min=0 max=100> </progress> -->
+            <div class="userConnecté">
+                <p>
+                    {% if userEmail %}
+                        {{userEmail}} <br />
+                        <a href="{% url 'mesAbonnements' %}" class="autresLien">Mon compte</a>
+                        <a href="{% url 'deconnexion' %}" class="autresLien" onclick='return confirm ("Êtes vous sûre de vouloir vous déconnectez ?");'>Déconnexion</a>
+                    {% else %}
+                        Vous n'êtes pas connecté.
+                        <a href="{% url 'Connexion' %}" class="autresLien">Connexion ici</a>
+                    {% endif %}
+                </p>
+                
+            </div> 
+            
+            
+            <br />
+            <aside>
+                  <div class="explication">
+                      <dfn>
+                        <p>Bienvenue sur la plateforme yabrigni. Nous sommes très content de vous accueillir et esperons que vous vous plairez ici. Cette plateforme
+                             est essentielement dedié aux nouvelles technologies en rapport avec l'Intélligence Artificielle telque : 
+                            l'analyse de données, le traitement d'image, le machine learning et le deep learning. 
+                        </p>
+                     </dfn>
+                  </div>      
+                        
+
+                     
+                 <br />
+                 <br />
+                <h2>Access rapide </h2>
+                 <ul class="optionTravail">
+                    <li><a href="{% url 'ImportData' %}" title="Importer vos données pour créer des graphiques et dévélopper vos propres modèles d'Apprentissage Automatique" >Nouvelle analyse de données</a></li>
+                    <li><a href="{% url 'importeImage' %}" title="Importer vos images/vidéos pour les traités" >Nouveau traitement d'Images</a></li>
+                    <li><a href="{% url 'modelesML_Publique' 1 %}" title="Tester gratuitement des modèles d'Intélligence Artificielle" >Intélligence Artificielle publiques</a></li>
+                    <li><a href="{% url 'graphiques_Publique' %}" title="Visualiser et télécharger des graphiques partagés" >Visualisation de graphiques publiques</a></li>
+                 </ul>    
+             </aside>
+             
+             
+             
+   
+        <div class="container">          
+          <main class="grid">
+            <article>
+              <img src="{% static 'images/graphique2.jpeg' %}"/>
+              <div class="text">
+                <h3>Création de graphiques</h3>
+                <p><br />
+                    Importer vos fichier excel, csv ... et en fonction de la structure de vos données
+                    générer facilement de beaux graphiques telque :<br />
+                    - Les courbes<br />
+                    - Les secteurs<br />
+                    - Les histogrammes<br />
+                    - Les nuages de points ...
+                </p>
+                <!--<a href="https://codepen.io/collection/XdWJOQ/" class="btn btn-primary btn-block">Here's why</a>-->
+              </div>
+            </article>
+            
+            <article>
+              <img src="{% static 'images/ML_Supervise3.jpeg' %}" class="imgFonctionnalite">
+              <div class="text">
+                <h3>Apprentissage supervisé</h3>
+                <p><br />
+                      Développer des modèles de Machine Learning supervisé pour resoudre vos problème de : <br />
+                      - Régression Linéraire : prédire par exemple le prix d'un appartement en fonction ses de ses caractéristiques.<br /><br />
+                      - Classification : par exemple prédire si une tumeur est maligne ou benigne.
+                </p>
+              </div>
+            </article>
+            
+            <article>
+              <img src="{% static 'images/ML_Non_Supervise.jpeg' %}" class="imgFonctionnalite">
+              <div class="text">
+                <h3>Apprentissage  non supervisé</h3>
+                <p><br />
+                    Développer des modèles de Machine Learning non supervisé pour résoudre vos problèmes de : <br />
+                    - Clustering <br />
+                    - Réduction de la dimentionnalité <br />
+                    - Détection d'Anomalie ...
+                </p>
+              </div>
+            </article>
+            
+            <article>
+             <img src="{% static 'images/imageTraitement.jpeg' %}">
+              <div class="text">
+                <h3>Traitement d'image</h3>
+                <p><br />
+                     Importer vos images et traiter les facilement :<br />
+                     - Seuillage / Filtrage d'image <br />
+                     - Segmentation sur une image<br />
+                     - La reconnaissance d'objet et de visage sur une image ...
+                </p>
+              </div>
+            </article>
+            <!--
+            <article>
+              <img src="https://picsum.photos/600/400?image=1041" alt="Sample photo">
+              <div class="text">
+                <h3>Dynamically innovate supply chains</h3>
+                <p>Holisticly predominate extensible testing procedures for reliable supply chains.</p>
+                <a href="https://codepen.io/collection/XdWJOQ/" class="btn btn-primary btn-block">Here's why</a>
+              </div>
+            </article>
+            <article>
+              <img src="https://picsum.photos/600/400?image=1015" alt="Sample photo">
+              <div class="text">
+                <h3>Sanity check</h3>
+                <p>Objectively innovate empowered manufactured products whereas parallel platforms.</p>
+                <a href="https://codepen.io/collection/XdWJOQ/" class="btn btn-primary btn-block">Stop here</a>
+              </div>
+            </article>
+            -->
+      </main>
+</div>
+             
+             
+             
+             
+                
+              <br />   
+              <br />   
+              <br />   
+            <aside>     
+                
+                  <h2>Inscription</h2><br />
+                  <div class="explication">
+                      <dfn>
+                         Inscrivez vous gratuitement et beneficiez de plus de fonctionnalités sur la plateforme telque :<br /><br />
+                         - La sauvegarde de vos graphiques dans votre compte<br /><br />
+                         - La sauvegarde de vos données imputées, encodées, normalisées ... <br /><br />
+                         - Réalisation de tests de dépendance (Chi2, Anova, Pearson ...) <br /><br />                         
+                         - La sauvegarde de vos modèles de Machine Learning<br /><br />
+                         - La sauvegarde de vos images traitées <br /><br />
+                         <!-- Assistance dedié ... <br /><br />-->
+                         <!--*** Le tout a seulement 1€/mois ***-->
+                        <a href="{% url 'Inscription' %}" style="border:1px solid orange;">Inscription ici</a>                  
+
+                      </dfn>
+                  </div>
+            </aside>
+            
+            
+           
+                
+                    <aside>          
+                        <h2>Nos autres applications</h2>        
+                            <p>
+                                <br />
+                                Nous mettons également à votre disposition des logiciels de gestion pour la digitalisation
+                                 de vos services (<a href="{% url 'autreLogiciels' %}"> Autres applications ici </a>).
+                            </p>
+                      </aside>
+               
+                {% endblock %}
+                
+                
+                {% block pied %}
+                <footer>
+                    <p>
+                        <a href="mailto:yabrigni@gmail.com">yabrigni@gmail.com</a>
+                    </p>
+                </footer>
+                {% endblock %}
+             </section>  
+            <script>
+                    // Besoin de jquery : CDN ou File
+                    $(document).ready(preloderFunction());      
+    
+                    function preloderFunction() {
+                      
+                        setTimeout(function() {
+                            
+                            // Force Main page to show from the Start(Top) even if user scroll down on preloader - Primary (Before showing content)
+                           
+                            // Model 1 - Fast            
+                            document.getElementById("page-top").scrollIntoView();
+                            
+                            // Model 2 - Smooth             
+                            // document.getElementById("page-top").scrollIntoView({behavior: 'smooth'});
+                                    
+                            
+                        
+                            
+                            // Removing Preloader:
+                            
+                            $('#ctn-preloader').addClass('loaded');  
+                            // Once the preloader has finished, the scroll appears 
+                            $('body').removeClass('no-scroll-y');
+                    
+                            if ($('#ctn-preloader').hasClass('loaded')) {
+                                // It is so that once the preloader is gone, the entire preloader section will removed
+                                $('#preloader').delay(700).queue(function() { //1000
+                                    $(this).remove();
+                                    
+                                    // If you want to do something after removing preloader:
+                                    afterLoad();
+                                    
+                                });
+                            }
+                        }, 2200); //3000
+                    }
+                    
+                    
+                    
+                    function afterLoad() {
+                        // After Load function body!
+                    }
+
+            </script>
+        </body>
+        
+    </html>
+    
