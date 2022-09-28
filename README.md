@@ -1,3 +1,3 @@
-# Destinations de voyage
+# Projet d'Analyse de données
 
-Une application simple pour garder une trace des destinations que je voudrais visiter.
+Ce projet permet d'analyser les données en fonction de la structure des données de l'utilisateur.
